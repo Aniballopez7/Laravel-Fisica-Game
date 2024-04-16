@@ -13,7 +13,7 @@
         <div class="puntaje" id="puntaje"></div>
         <div class="encabezado">
             <a class="salir" href="/">
-                <img class="img" src="../icon/flecha-pequena-izquierda.png" alt="Salir al menu de juegos">
+                <img class="img" src="icon/flecha-pequena-izquierda.png" alt="Salir al menu de juegos">
             </a>
             <div class="categoria" id="categoria"></div>
             <div class="numero" id="numero"></div>

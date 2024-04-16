@@ -45,7 +45,7 @@ use App\Http\Controllers\UsuariosController;
          @endguest
             <div class="card matematicas">
                 <div class="contenido">
-                    <a href="">Perfil</a>
+                    <a href="/">Perfil</a>
                 </div>
             </div>
             <div class="card fisica">
@@ -55,7 +55,7 @@ use App\Http\Controllers\UsuariosController;
             </div>
             <div class="card quimica">
                 <div class="contenido">
-                    <a href="Quimica/juego de quimica.html">Clasificacion</a>
+                    <a href="/">Clasificacion</a>
                 </div>
             </div>
     

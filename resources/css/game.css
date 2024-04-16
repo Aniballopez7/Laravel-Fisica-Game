@@ -3,11 +3,12 @@
     src: url("/font/HammersmithOne-Regular.ttf") format("truetype");
     font-style: normal;
 }
+
 body{
-    background: #283048;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    background: #000428;  /* fallback for old browsers */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+    font-family: "Hammersmith One";
     text-align: center;
     font-family: 'Hammersmith One';
 }
@@ -81,7 +82,8 @@ body{
 }
 .numero{
     position: absolute;
-    opacity:0.3;
+    color: #fff;
+    opacity:0.5;
     top: 5.5%;
     right: 4%;
   }
