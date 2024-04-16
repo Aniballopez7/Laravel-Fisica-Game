@@ -2,6 +2,9 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\Clasifications;
+use App\Models\Data_user;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,11 @@ Route::get('/', function () {
     // $clasifications1 = Clasifications::all();
     // foreach ($clasifications1 as $clasification) {
     //     echo $clasification->user->email.'<br>'.$clasification->user->nickname.'<br>'.$clasification->user->password;
+    // }
+    // echo '<hr>';
+    // $data = Data_user::all();
+    // foreach ($data as $dat) {
+    //     echo $dat->user;
     // }
 });
 
