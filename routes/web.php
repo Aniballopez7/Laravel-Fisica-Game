@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Clasifications;
@@ -44,4 +44,5 @@ Route::get('/game', [App\Http\Controllers\GameController::class, 'game'])->name(
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'perfil'])->name('perfil');
 Route::get('/user/{id}', [App\Http\Controllers\PerfilController::class, 'editUser'])->name('editUser');
-Route::get('/editUser/{id}', [App\Http\Controllers\PerfilController::class, 'updateUser'])->name('updateUser');
+Route::post('/editUser/{id}', [App\Http\Controllers\PerfilController::class, 'update'])->name('update');
+Route::resource('perfil',PerfilController::class);

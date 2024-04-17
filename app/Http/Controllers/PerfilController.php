@@ -31,13 +31,13 @@ class PerfilController extends Controller
     public function editUser(string $id)
     {
         $user = User::find($id);
-        $user = Data_user::find($user->data_user_id);
-        return view('front.userConfig.view_editPerfil', compact('user'))->with([
-            'user' => $user,
+        $data_user = Data_user::find($user->data_user->id);
+        return view('front.userConfig.view_editPerfil', compact('data_user'))->with([
+            'data_user' => $data_user,
         ]);
     }
 
-    public function updateUser(Request $request, $id)
+    public function update(Request $request, $id)
     {
         //todo validando la tabla de data_user
         $request->validate([
