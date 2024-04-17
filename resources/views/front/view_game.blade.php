@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisica</title>
-    @vite(['resources/css/game.css'])
-    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-</head>
-<body>
+@extends('layouts.nav_view')
+@section('title', 'Games')
+@vite(['resources/css/game.css'])
+@section('content')
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <div class="contenedor">
         <div class="puntaje" id="puntaje"></div>
         <div class="encabezado">
@@ -25,6 +19,5 @@
             <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
         </div>
     </div>
-</body>
-<script src="{{ asset('js/logica.js') }}"></script>
-</html>
+    <script src="{{ asset('js/logica.js') }}"></script>
+@endsection

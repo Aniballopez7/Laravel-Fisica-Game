@@ -6,9 +6,11 @@
 
 body {
     background: linear-gradient(to right, #928DAB, #1F1C2C);
+    text-align: center;
+    font-family: "Hammersmith One";
 }
 
-.contenedor {
+#contenedor {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
