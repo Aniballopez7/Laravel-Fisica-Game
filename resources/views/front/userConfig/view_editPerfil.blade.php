@@ -2,25 +2,38 @@
 @section('title', 'Editar perfil')
 @vite(['resources/css/perfil.css'])
 @section('content')
-    @if (Auth::check())
-        <!-- Mostrar la información del customer, si existe -->
-        {{-- @if (isset($user) && isset($user->data_user))
-            <p>{{ $user->id }}</p>
-            <p>{{ $user->nickname }}</p>
-            <p>{{ $user->data_user->name }}</p>
-            <p>{{ $user->data_user->last_name }}</p>
-            <p>{{ $user->data_user->puntuacion }}</p>
-            <!-- Mostrar otros campos del customer -->
-            <div>
-                <a class="btn btn-sm btn-success" href="{{ route('editUser', $user->id) }}"><i class="fa fa-fw fa-edit"></i>
-                    Editar perfil</a>
+<div class="contenido__pagina">
+    <div class="configuracion">
+        <h3 class="configuracion__titulo">Editar perfil</h3>
+        <form class="form" method="POST" action="{{ route('updateUser', $user->id) }}" role="form" enctype="multipart/form-data">
+            {{ method_field('GET') }}
+            @csrf
+            <div class="form_container">
+                <div class="form-control">        
+                    <input type="hidden" id="id" name="users_id" value="{{$user->id}}" />
+                </div>
+                <div class="form_grupo">
+                    <label for="nombre" class="form_label">Nombre:</label>
+                    <span class="form_line"></span>
+                    <input type="text" name="name" class="form_input" placeholder=" " value="{{$user->name}}" required>
+                </div>
+                <div class="form_grupo">
+                    <label for="apellido" class="form_label" value="">Apellido:</label>
+                    <span class="form_line"></span>
+                    <input type="text" name="last_name" class="form_input" placeholder=" " value="{{$user->last_name}}" required>
+                </div>
+                <div class="form_grupo">
+                    <label for="apellido" class="form_label" value="">Puntuacion: </label>
+                    <span class="form_line">2</span>
+                    <input type="hidden" name="puntuation" class="form_input" placeholder=" " value="{{$user->puntuation}}" required>
+                </div>
+                <div class="form_grupo">
+                    <label for="apellido" class="form_label" value="">Foto</label>
+                    <span class="form_line"></span>
+                    <input type="text" name="photo_user" class="form_input" placeholder=" " value="{{$user->photo_user}}" required>
+                </div>                        
             </div>
-        @else
-            <p>No existe data del usuario</p>
-            <div>
-                <a class="btn btn-sm btn-success" href="{{ route('editUser', $user->id) }}"><i class="fa fa-fw fa-edit"></i>
-                    Añadir informacion</a>
-            </div>
-        @endif --}}
-    @endif
+            <input type="submit" class="form_submit" name="subir" value="Guardar Cambios">
+        </form>
+    </div>
 @endsection
