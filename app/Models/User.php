@@ -23,6 +23,10 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
+        'name',
+        'last_name',
+        'puntuacion',
+        'photo_user'
     ];
 
     /**
@@ -45,7 +49,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function data_user(){
-        return $this->belongsTo(Data_user::class,'data_user_id', 'id');
-    }
 }

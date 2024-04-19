@@ -44,5 +44,6 @@ Route::get('/game', [App\Http\Controllers\GameController::class, 'game'])->name(
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'perfil'])->name('perfil');
 Route::get('/user/{id}', [App\Http\Controllers\PerfilController::class, 'editUser'])->name('editUser');
-Route::post('/editUser/{id}', [App\Http\Controllers\PerfilController::class, 'update'])->name('update');
-Route::resource('perfil',PerfilController::class);
+Route::put('/editUser/{id}', [App\Http\Controllers\PerfilController::class, 'update'])->name('update');
+
+// Route::put('/updateUser/{id}',[App\Http\Controllers\PerfilController::class, 'update'])->name('update');
