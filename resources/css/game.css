@@ -90,3 +90,8 @@ body{
     padding:10px;
     color:white;
   }
+
+  .btn-footer{
+    color: #000428;
+    text-decoration: none;
+  }

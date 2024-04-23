@@ -19,7 +19,7 @@ use App\Http\Controllers\UsuariosController;
         </div>
         <div class="card quimica">
             <div class="contenido">
-                <a href="{{ route('clasifications') }}">Clasificacion</a>
+                <a href="{{ route('scores') }}">Calificacion</a>
             </div>
         </div>
     </div>

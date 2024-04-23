@@ -1,160 +1,170 @@
+
+
+
 let preguntas_aleatorias = true;
 let mostrar_pantalla_juego_términado = true;
 let reiniciar_puntos_al_reiniciar_el_juego = true;
 
 window.onload = function () {
-  fetch('js/preguntas.json')
- .then(response => response.json())
- .then(data => {
-    interprete_bp = data;
-    escogerPreguntaAleatoria();
-  })
- .catch(error => console.error('Error al leer el JSON:', error));
+    fetch("js/preguntas.json")
+        .then((response) => response.json())
+        .then((data) => {
+            interprete_bp = data;
+            escogerPreguntaAleatoria();
+        })
+        .catch((error) => console.error("Error al leer el JSON:", error));
 };
 
 let pregunta;
 let posibles_respuestas;
 btn_correspondiente = [
-  select_id("btn1"),
-  select_id("btn2"),
-  select_id("btn3"),
-  select_id("btn4")
+    select_id("btn1"),
+    select_id("btn2"),
+    select_id("btn3"),
+    select_id("btn4"),
 ];
 let npreguntas = [];
 
 let preguntas_hechas = 0;
 let preguntas_correctas = 0;
+let n;
 
 function escogerPreguntaAleatoria() {
-  let n;
-  if (preguntas_aleatorias) {
-    n = Math.floor(Math.random() * interprete_bp.length);
-  } else {
-    n = 0;
-  }
+    if (preguntas_aleatorias) {
+        n = Math.floor(Math.random() * interprete_bp.length);
+    } else {
+        n = 0;
+    }
+    console.log("Valor de n:", n);
+    console.log("Contenido de npreguntas:", npreguntas);
+    while (npreguntas.includes(n)) {
+        n++;
+        if (n >= interprete_bp.length) {
+            n = 0;
+        }
+    }
+    if (preguntas_hechas == 2) {
+        //Aquí es donde el juego se reinicia
+        if (mostrar_pantalla_juego_términado) {
+            swal.fire({
+                title: "Juego finalizado Gracias por Jugar, sera redirigido a la pagina principal",
+                text:
+                    "Puntuación: " +
+                    preguntas_correctas +
+                    "/" +
+                    preguntas_hechas,
+                icon: "success",
+                showConfirmButton: false, // Oculta el botón de confirmación predeterminado
+                showCloseButton: true, // Muestra un botón de cerrar
+                footer: '<a href="/" id="redirigir" class="btn btn-footer">Redirigir a la página principal</a>', // Agrega un botón personalizado en el pie de página
+            })
+        }
+        if (reiniciar_puntos_al_reiniciar_el_juego) {
+            preguntas_correctas = 0;
+            preguntas_hechas = 0;
+        }
+        npreguntas = [];
+    } else {
+        preguntas_hechas++;
 
-  while (npreguntas.includes(n)) {
-    n++;
-    if (n >= interprete_bp.length) {
-      n = 0;
+        npreguntas.push(n);
+        escogerPregunta(n);
     }
-    if (npreguntas.length == interprete_bp.length) {
-      //Aquí es donde el juego se reinicia
-      if (mostrar_pantalla_juego_términado) {
-        swal.fire({
-          title: "Juego finalizado Gracias por Jugar, sera redirigido a la pagina principal",
-          text:
-            "Puntuación: " + preguntas_correctas + "/" + (preguntas_hechas),
-          icon: "success"
-        });
-      }
-      if (reiniciar_puntos_al_reiniciar_el_juego) {
-        preguntas_correctas = 0
-        preguntas_hechas = 0  
-      }
-      npreguntas = [];
-      setTimeout(function() {
-        window.location.href = "../../index.html";  
-      }, 8000);
-    }
-  }
-  npreguntas.push(n);
-  preguntas_hechas++;
-  escogerPregunta(n);
 }
 
 function escogerPregunta(n) {
-  pregunta = interprete_bp[n];
-  select_id("categoria").innerHTML = pregunta.categoria;
-  select_id("pregunta").innerHTML = pregunta.pregunta;
-  select_id("numero").innerHTML = "Pregunta " + (n);
-  let pc = preguntas_correctas;
-  if (preguntas_hechas > 1) {
-    select_id("puntaje").innerHTML = "Correctas " + pc + " / Preguntas " + (preguntas_hechas - 1);
-  } else {
-    select_id("puntaje").innerHTML = "";
-  }
+    pregunta = interprete_bp[n];
+    select_id("categoria").innerHTML = pregunta.categoria;
+    select_id("pregunta").innerHTML = pregunta.pregunta;
+    select_id("numero").innerHTML = "Pregunta " + n;
+    let pc = preguntas_correctas;
+    if (preguntas_hechas > 1) {
+        select_id("puntaje").innerHTML =
+            "Correctas " + pc + " / Preguntas " + (preguntas_hechas - 1);
+    } else {
+        select_id("puntaje").innerHTML = "";
+    }
 
-  style("imagen").objectFit = pregunta.objectFit;
-  desordenarRespuestas(pregunta);
-  if (pregunta.imagen) {
-    select_id("imagen").setAttribute("src", pregunta.imagen);
-    style("imagen").height = "200px";
-    style("imagen").width = "60%";
-  } else {
-    style("imagen").height = "0px";
-    style("imagen").width = "0px";
-    setTimeout(() => {
-      select_id("imagen").setAttribute("src", "");
-    }, 500);
-  }
+    style("imagen").objectFit = pregunta.objectFit;
+    desordenarRespuestas(pregunta);
+    if (pregunta.imagen) {
+        select_id("imagen").setAttribute("src", pregunta.imagen);
+        style("imagen").height = "200px";
+        style("imagen").width = "60%";
+    } else {
+        style("imagen").height = "0px";
+        style("imagen").width = "0px";
+        setTimeout(() => {
+            select_id("imagen").setAttribute("src", "");
+        }, 500);
+    }
 }
 
 function desordenarRespuestas(pregunta) {
-  posibles_respuestas = [
-    pregunta.respuesta,
-    pregunta.incorrecta1,
-    pregunta.incorrecta2,
-    pregunta.incorrecta3,
-  ];
-  posibles_respuestas.sort(() => Math.random() - 0.5);
+    posibles_respuestas = [
+        pregunta.respuesta,
+        pregunta.incorrecta1,
+        pregunta.incorrecta2,
+        pregunta.incorrecta3,
+    ];
+    posibles_respuestas.sort(() => Math.random() - 0.5);
 
-  select_id("btn1").innerHTML = posibles_respuestas[0];
-  select_id("btn2").innerHTML = posibles_respuestas[1];
-  select_id("btn3").innerHTML = posibles_respuestas[2];
-  select_id("btn4").innerHTML = posibles_respuestas[3];
+    select_id("btn1").innerHTML = posibles_respuestas[0];
+    select_id("btn2").innerHTML = posibles_respuestas[1];
+    select_id("btn3").innerHTML = posibles_respuestas[2];
+    select_id("btn4").innerHTML = posibles_respuestas[3];
 }
 
 let suspender_botones = false;
 
 function oprimir_btn(i) {
-  if (suspender_botones) {
-    return;
-  }
-  suspender_botones = true;
-  if (posibles_respuestas[i] == pregunta.respuesta) {
-    preguntas_correctas++;
-    btn_correspondiente[i].style.background = "#0807";
-    btn_correspondiente[i].style.color = "#fff";
-  } else {
-    btn_correspondiente[i].style.background = "#a00";
-    btn_correspondiente[i].style.color = "#fff";
-  }
-  for (let j = 0; j < 4; j++) {
-    if (posibles_respuestas[j] == pregunta.respuesta) {
-      btn_correspondiente[j].style.background = "#0807";
-      break;
+    if (suspender_botones) {
+        return;
     }
-  }
-  setTimeout(() => {
-    reiniciar();
-    suspender_botones = false;
-  }, 3000);
+    suspender_botones = true;
+    if (posibles_respuestas[i] == pregunta.respuesta) {
+        preguntas_correctas++;
+        btn_correspondiente[i].style.background = "#0807";
+        btn_correspondiente[i].style.color = "#fff";
+    } else {
+        btn_correspondiente[i].style.background = "#a00";
+        btn_correspondiente[i].style.color = "#fff";
+    }
+    for (let j = 0; j < 4; j++) {
+        if (posibles_respuestas[j] == pregunta.respuesta) {
+            btn_correspondiente[j].style.background = "#0807";
+            break;
+        }
+    }
+    setTimeout(() => {
+        reiniciar();
+        suspender_botones = false;
+    }, 3000);
 }
 
 function reiniciar() {
-  for (const btn of btn_correspondiente) {
-    btn.style.background = "";
-    btn.style.color = "";
-  }
-  escogerPreguntaAleatoria();
+    for (const btn of btn_correspondiente) {
+        btn.style.background = "";
+        btn.style.color = "";
+    }
+    escogerPreguntaAleatoria();
 }
 
 function select_id(id) {
-  return document.getElementById(id);
+    return document.getElementById(id);
 }
 
 function style(id) {
-  return select_id(id).style;
+    return select_id(id).style;
 }
 
 function readText(ruta_local) {
-  var texto = null;
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("GET", ruta_local, false);
-  xmlhttp.send();
-  if (xmlhttp.status == 200) {
-    texto = xmlhttp.responseText;
-  }
-  return texto;
+    var texto = null;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", ruta_local, false);
+    xmlhttp.send();
+    if (xmlhttp.status == 200) {
+        texto = xmlhttp.responseText;
+    }
+    return texto;
 }

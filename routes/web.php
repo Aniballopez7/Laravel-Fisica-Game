@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ScoresController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
-use App\Models\Clasifications;
-use App\Models\Data_user;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +40,25 @@ Route::get('/', function () {
 Auth::routes();
 
 //todo primero la ruta, controlador, nombre de la funcion a llamar en el controlador y el nombre el cual se llamara en el html
-Route::get('/clasifications', [App\Http\Controllers\ClasificationController::class, 'clasifications'])->name('clasifications');
-Route::get('/game', [App\Http\Controllers\GameController::class, 'game'])->name('game');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'perfil'])->name('perfil');
-Route::get('/user/{id}', [App\Http\Controllers\PerfilController::class, 'editUser'])->name('editUser');
-Route::put('/editUser/{id}', [App\Http\Controllers\PerfilController::class, 'update'])->name('update');
 
-// Route::put('/updateUser/{id}',[App\Http\Controllers\PerfilController::class, 'update'])->name('update');
+Route::get('/scores', [App\Http\Controllers\ScoresController::class, 'scores'])->name('scores');
+
+Route::get('/game', [App\Http\Controllers\GameController::class, 'game'])->name('game');
+
+//todo rutas de perfil
+Route::controller(PerfilController::class)->group(function(){
+    Route::get('/perfil','perfil')->name('perfil');
+    Route::get('/perfil/editUser/{id}', 'editUser')->name('editUser');
+    Route::put('/perfil/updateUser/{id}', 'update')->name('update');
+});
+
+Route::get('/datatable/users', [App\Http\Controllers\DatatableController::class, 'user'])->name('user');
+Route::post('/api/update-user', function (Request $request) {
+    $user = auth()->user();
+    $user->nickname = $request->name;
+    $user->email = $request->email;
+    $user->puntuation = $request->preguntas_correctas;
+    $user->save();
+    return response()->json(['success' => true]);
+});

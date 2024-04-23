@@ -21,3 +21,5 @@
     </div>
     <script src="{{ asset('js/logica.js') }}"></script>
 @endsection
+
+{{-- pasarle las preguntas --}}
