@@ -27,17 +27,14 @@
             </table>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
 
-    {{-- <script src="{{asset('build/assets/jquery-3.7.1-T69IKIHc.js')}}"></script>
-    <script src="{{asset('build/assets/bootstrap.bundle.min-7rPLrCbd.js')}}"></script>
-    <script src="{{asset('build/assets/dataTables-Dd9R3BgY.js')}}"></script>
-    <script src="{{asset('build/assets/dataTables.bootstrap5-DPTKpuX5.js')}}"></script> --}}
+    <script src="{{asset('js/jquery-3.7.1.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('js/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('js/responsive.bootstrap5.js')}}"></script>
+    
     <script>
         {{-- todo Via ajax  --}}
         new DataTable('#usuarios' ,{
