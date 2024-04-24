@@ -12,9 +12,6 @@
                     <th scope="col">Puntuacion</th>
                 </thead>
                 {{-- todo Via ajax  --}}
-                {{-- <tfoot>
-                    
-                </tfoot> --}}
                 <tbody>
                     @foreach ($scores as $score)
                         <tr>
