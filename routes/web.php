@@ -20,21 +20,6 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('front.index');
-    // $users = User::all();
-    // foreach ($users as $user) {
-    //     echo $user->email.'<br>'.$user->nickname.'<br>'.$user->password.'<br>';
-    //     echo '<hr>';
-        
-    // }
-    // $clasifications1 = Clasifications::all();
-    // foreach ($clasifications1 as $clasification) {
-    //     echo $clasification->user->email.'<br>'.$clasification->user->nickname.'<br>'.$clasification->user->password;
-    // }
-    // echo '<hr>';
-    // $data = Data_user::all();
-    // foreach ($data as $dat) {
-    //     echo $dat->user;
-    // }
 });
 
 Auth::routes();
@@ -51,14 +36,7 @@ Route::controller(PerfilController::class)->group(function(){
     Route::get('/perfil','perfil')->name('perfil');
     Route::get('/perfil/editUser/{id}', 'editUser')->name('editUser');
     Route::put('/perfil/updateUser/{id}', 'update')->name('update');
+    Route::put('/perfil/updateUserPuntuation/{id}', 'updatePuntuacion')->name('updatePuntuacion');
 });
 
 Route::get('/datatable/users', [App\Http\Controllers\DatatableController::class, 'user'])->name('user');
-Route::post('/api/update-user', function (Request $request) {
-    $user = auth()->user();
-    $user->nickname = $request->name;
-    $user->email = $request->email;
-    $user->puntuation = $request->preguntas_correctas;
-    $user->save();
-    return response()->json(['success' => true]);
-});

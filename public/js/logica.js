@@ -35,15 +35,15 @@ function escogerPreguntaAleatoria() {
     } else {
         n = 0;
     }
-    console.log("Valor de n:", n);
-    console.log("Contenido de npreguntas:", npreguntas);
     while (npreguntas.includes(n)) {
         n++;
         if (n >= interprete_bp.length) {
             n = 0;
         }
     }
-    if (preguntas_hechas == 2) {
+    if (preguntas_hechas === 2) {
+        pc = preguntas_correctas;
+        select_id("inputpuntaje").value = preguntas_correctas;
         //Aquí es donde el juego se reinicia
         if (mostrar_pantalla_juego_términado) {
             swal.fire({
@@ -56,8 +56,14 @@ function escogerPreguntaAleatoria() {
                 icon: "success",
                 showConfirmButton: false, // Oculta el botón de confirmación predeterminado
                 showCloseButton: true, // Muestra un botón de cerrar
-                footer: '<a href="/" id="redirigir" class="btn btn-footer">Redirigir a la página principal</a>', // Agrega un botón personalizado en el pie de página
+                html: '<button class="btn btn-puntuacion" id="enviar">Regresar al menu principal</button>', // Agrega un botón personalizado en el pie de página
             })
+            document.querySelector('.swal2-close').addEventListener('click', function(){
+                document.getElementById('formulario').submit();
+            });
+            document.getElementById('enviar').addEventListener('click', function(){
+                document.getElementById('formulario').submit();
+            });
         }
         if (reiniciar_puntos_al_reiniciar_el_juego) {
             preguntas_correctas = 0;
@@ -77,10 +83,11 @@ function escogerPregunta(n) {
     select_id("categoria").innerHTML = pregunta.categoria;
     select_id("pregunta").innerHTML = pregunta.pregunta;
     select_id("numero").innerHTML = "Pregunta " + n;
-    let pc = preguntas_correctas;
+    var pc = preguntas_correctas;
     if (preguntas_hechas > 1) {
         select_id("puntaje").innerHTML =
-            "Correctas " + pc + " / Preguntas " + (preguntas_hechas - 1);
+        "Correctas " + pc + " / Preguntas " + (preguntas_hechas - 1);
+        select_id("inputpuntaje").value = preguntas_correctas;
     } else {
         select_id("puntaje").innerHTML = "";
     }

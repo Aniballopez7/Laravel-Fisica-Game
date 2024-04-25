@@ -91,7 +91,8 @@ body{
     color:white;
   }
 
-  .btn-footer{
+  .btn-puntuacion{
+    background-color: #fff;
     color: #000428;
     text-decoration: none;
   }

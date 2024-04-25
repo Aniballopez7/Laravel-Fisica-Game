@@ -30,20 +30,35 @@ class PerfilController extends Controller
     public function editUser(string $id)
     {
         $user = User::find($id);
-        return view('front.userConfig.view_editPerfil')->with('user',$user);
+        return view('front.userConfig.view_editPerfil')->with('user', $user);
     }
 
     public function update(Request $request, $id)
     {
-        //todo validando la tabla de User
         $request->validate([
-            'name' => 'string',
-            'last_name' => 'string',
-            'puntuation' => 'integer',
-            'photo_user' => 'string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        //todo validando la tabla de User
         $user = User::findOrFail($id);
+        $image = $request->file('photo_user');
+        $path = 'User/images/';
+        $imageName = time() . "_" . $image->getClientOriginalName();
+        $upload = $request->file('photo_user')->move($path, $imageName);
+        $user->photo_user = $path . $imageName;
+
         $user->update($request->all());
         return redirect()->route('perfil');
+    }
+
+    public function updatePuntuacion(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        if ($user->puntuation < $request->puntaje) {
+            $user->puntuation = $request->puntaje;
+        } else {
+            $user->puntuation = $user->puntuation;
+        }
+        $user->update($request->all());
+        return view('front.index');
     }
 }

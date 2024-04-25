@@ -40,8 +40,7 @@
                     <div class="form_grupo">
                         <label for="apellido" class="form_label" value="">Foto</label>
                         <span class="form_line"></span>
-                        <input type="text" name="photo_user" class="form_input" placeholder=" "
-                            value="{{ $user->photo_user }}">
+                        <input type="file" class="form_grupo" id="photo_user" name="photo_user" accept="image/*">
                     </div>
                 </div>
                 <button type="submit" class="form_submit" name="subir" value="Guardar Cambios">Guardar</button>

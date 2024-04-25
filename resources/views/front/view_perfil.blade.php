@@ -5,7 +5,7 @@
     @if (Auth::check())
         <!-- Mostrar la información del customer, si existe -->
         @if (isset($user))
-            <form class="form">
+            <form class="form" enctype="multipart/form-data">
                 <div class="form_container">
                     <div class="form-control">
                         <input type="hidden" id="id" name="username" value="" />
@@ -17,12 +17,15 @@
                         </div>
                     </div>
                     <div class="form_grupo">
-                        <div for="img_user" class="form_div" value="">Foto de perfil:</div>
+                        <div for="photo_user" class="form_div" value="">Foto de perfil:</div>
                         <div>
                             @if ($user->photo_user == null)
                                 <p>No se ha encontrado una foto</p>
+
                             @else
-                                <p>{{ $user->photo_user }}</p>
+                                <img src="{{asset('User/imaged'.
+                                $user->photo_user)}}" width="100px" height="100px">
+                                {{-- <img src="{{ asset('images/'.$user->photo_user) }}" alt=""> --}}
                             @endif
                         </div>
                     </div>
@@ -45,9 +48,9 @@
                         <div for="puntuacion" class="form_div" value="">Puntuacion:</div>
                         <div>
                             @if ($user->puntuation == null)
-                                <p>No tienes puntuacion</p>
+                            <p>No tienes puntuacion</p>
                             @else
-                                <p>{{ $user->puntuation }}</p>
+                            <p>{{ $user->puntuation }}</p>
                             @endif
                         </div>
                     </div>
