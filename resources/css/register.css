@@ -70,7 +70,7 @@ h2{
 
 .flexbox{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -213,9 +213,9 @@ button:hover{
     color: #000;
 }
 .btn-register{
-    text-decoration: none;
+text-decoration: none;
     font-weight: 600;
-    flex-basis: 40%;
+    flex-basis: 20%;
     color: #000;
     margin-bottom: 1rem;
 }
@@ -224,6 +224,9 @@ button:hover{
     text-decoration: none;
 }
 
+.btn-registerP{
+    width: 25%;
+}
 .btn-registerP:hover{
     text-decoration: none;
 }

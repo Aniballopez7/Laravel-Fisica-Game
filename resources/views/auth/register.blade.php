@@ -12,77 +12,32 @@
 <body>
     <div class="container">
         <div class="home"><a href="/">Inicio</a></div>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
-    
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-    
-                            <div class="row mb-3">
-                                <label for="nickname" class="col-md-4 col-form-label text-md-end">{{ __('nickname') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input id="nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('name') }}" required autocomplete="name" autofocus>
-    
-                                    @error('nickname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-    
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-    
-                            <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-    
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-    
-                            <div class="row mb-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-    
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <h1 id="title">Registro de usuarios</h1>
+            <div class="flexbox">
+                <div class="inputbox">
+                    <input type="text" name="nickname" required>
+                    <label for="">Nickname: </label>
+                </div>
+                <div class="inputbox">
+                    <input type="text" name="email" required>
+                    <label for="">Correo: </label>
+                </div>
+                <div class="inputbox">
+                    <input type="password" name="password" required>
+                    <label for="">Contraseña:</label>
+                </div>
+                <div class="register">
+                    <button class="btn-register" type="submit" id="singUp">Registrar</button>
+                    <button class="btn-registerP" type="button">
+                        <a href="{{ route('login') }}">
+                            Iniciar Sesion
+                        </a>
+                    </button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 </body>

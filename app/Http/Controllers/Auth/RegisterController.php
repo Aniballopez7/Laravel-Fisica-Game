@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -62,16 +63,17 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        return User::create([
-            'nickname' => $data['nickname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            // 'name' => $data['name'],
-            // 'last_name' => $data['last_name'],
-            // 'puntuacion' => $data['puntuacion'],
-            // 'photo_user' => $data['photo_user'],
+        // Aquí puedes acceder a los datos enviados en la solicitud a través de $request
+        // Por ejemplo, para crear un nuevo usuario:
+        $user = User::create([
+            'nickname' => $request->nickname,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
+
+        return view('front.index');
+        // Luego, puedes proceder con la lógica de autenticación o redireccionamiento
     }
 }

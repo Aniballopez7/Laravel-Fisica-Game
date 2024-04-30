@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ScoresController;
@@ -40,3 +41,4 @@ Route::controller(PerfilController::class)->group(function(){
 });
 
 Route::get('/datatable/users', [App\Http\Controllers\DatatableController::class, 'user'])->name('user');
+Route::post('/Registrar',[App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');

@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Hammersmith One';
+    src: url("../font/HammersmithOne-Regular.ttf") format("truetype");
+    font-style: normal;
+}
+
+body {
+    background: linear-gradient(to right, #928DAB, #1F1C2C);
+    text-align: center;
+    font-family: "Hammersmith One";
+}
+
+#contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 65%;
+    height: 600px;
+    margin: auto;
+    font-family: "Hammersmith One";
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.titulo {
+    display: flex;
+    width: 100%;
+    font-size: 48px;
+    color: #fff;
+    justify-content: center;
+    align-self: center;
+    text-decoration: none;
+}
+
+ul {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 65%;
+    height: 400px;
+    margin: auto;
+    font-family: "Hammersmith One";
+}
+
+.form_container {
+    width: 450px;
+    border: 1px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direccion: column;
+    align-items: center;
+    background: rgb(26, 26, 26);
+    color: rgb(240, 240, 240);
+}
+
+.form_group div {
+    position: relative;
+    margin-top: -4.5rem;
+    border-radius: 80px;
+    -webkit-border-radius: 80px;
+    -moz-border-radius: 80px;
+    -ms-border-radius: 80px;
+    -o-border-radius: 80px;
+    width: 150px;
+    border: 2px solid black;
+    z-index: 2;
+}
+
+.btn btn-sm btn-success {
+    display: flex;
+    width: 100%;
+    font-size: 48px;
+    color: #fff;
+    justify-content: center;
+    align-self: center;
+    text-decoration: none;
+}
