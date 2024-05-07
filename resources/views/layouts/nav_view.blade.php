@@ -10,7 +10,7 @@
 <body>
     <div id="container">
         <div id="header">
-            <h1><a href="/" class="titulo">Fisic-Game</a></h1>
+            <h1><a href="/" class="titulo">Fisics-Game</a></h1>
             <ul>
                 {{-- <li><a>Registrese</a></li>
                 <li><a>Acceda</a></li> --}}
@@ -28,22 +28,23 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                    <li class="nav-item-dropdown">
+                        <a id="navbarDropdown" class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->nickname }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
+                            
                         </div>
                     </li>
                 @endguest

@@ -396,7 +396,7 @@ div.dt-container div.dt-paging {
 }
 div.dt-container div.dt-paging ul.pagination {
   margin: 2px 0;
-  flex-wrap: wrap;
+  flex-direction: row;
 }
 div.dt-container div.dt-row {
   position: relative;

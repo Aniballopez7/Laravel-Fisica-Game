@@ -5,7 +5,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table class="table table-dark table-borderless" id="usuarios">
+            <table class="table table-dark table-borderless table-hover" id="usuarios">
                 <thead>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>

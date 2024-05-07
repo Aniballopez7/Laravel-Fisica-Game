@@ -10,6 +10,99 @@ body{
     text-align: center;
     font-family: "Hammersmith One";
 }
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.titulo {
+    display: flex;
+    width: 100%;
+    font-size: 48px;
+    color: #fff;
+    justify-content: center;
+    align-self: center;
+    text-decoration: none;
+}
+ul{
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+}
+.card {
+    height: 500px;
+    margin: 10px;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 3px 5px 5px #00000072;
+    flex: 1;
+    transition: .4s flex;
+}
+
+.nav-link{
+    color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+    padding: 10px;
+    border-radius: 25px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.nav-link:hover{
+    background-color: #fff;
+    color: #1F1C2C;
+}
+
+.nav-item-dropdown{
+    width: 20%;
+    color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+}
+
+
+.dropdown-item{
+    color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+    padding: 10px;
+    border-radius: 25px;
+    margin-left: 8px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.dropdown-item:hover{
+    background-color: #fff;
+    color: #1F1C2C;
+}
+
+#logout-form.d-none{
+    margin: 0;
+}
+
 .contenedor{
     height: 100vh;
     width: 100vw;
