@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Data_user;
+use App\Models\Scores;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,10 +54,20 @@ class PerfilController extends Controller
     public function updatePuntuacion(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        if ($user->puntuation < $request->puntaje) {
-            $user->puntuation = $request->puntaje;
+        $scoreSearch = Scores::where('user_id', $user->id)->first(); //TODO 
+        if ($scoreSearch) {            
+            if ($user->puntuation < $request->puntaje) {
+                $user->puntuation = $request->puntaje;
+            } else {
+                $user->puntuation = $user->puntuation;
+            }
         } else {
-            $user->puntuation = $user->puntuation;
+            $user->puntuation = $request->puntaje;
+            $score = Scores::create([
+                'user_id' => $user->id,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
         }
         $user->update($request->all());
         return view('front.index');
