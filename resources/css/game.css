@@ -206,3 +206,9 @@ ul{
     background-color: #fff;
     color: #000;
   }
+
+  #contadorComodines {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 10px;
+}

@@ -13,6 +13,7 @@ window.onload = function () {
             escogerPreguntaAleatoria();
         })
         .catch((error) => console.error("Error al leer el JSON:", error));
+        actualizarContadorComodines();
 };
 
 let pregunta;
@@ -179,19 +180,38 @@ function readText(ruta_local) {
     return texto;
 }
 
+let comodinesRestantes = 3;
+
 function usarComodin() {
-    // Obtener el índice de la respuesta correcta
-    let indiceRespuestaCorrecta = obtenerIndiceRespuestaCorrecta();
+    if (comodinesRestantes > 0) {
+        // Obtener el índice de la respuesta correcta
+        let indiceRespuestaCorrecta = obtenerIndiceRespuestaCorrecta();
 
-    // Obtener un arreglo de índices de respuestas incorrectas (excluyendo la respuesta correcta)
-    let respuestasIncorrectas = [1, 2, 3].filter(index => index !== indiceRespuestaCorrecta);
+        // Obtener un arreglo de índices de respuestas incorrectas (excluyendo la respuesta correcta)
+        let respuestasIncorrectas = [1, 2, 3].filter(index => index !== indiceRespuestaCorrecta);
 
-    // Elegir aleatoriamente una respuesta incorrecta para ocultar
-    let indiceRespuestaOcultar = respuestasIncorrectas[Math.floor(Math.random() * respuestasIncorrectas.length)];
+        // Elegir aleatoriamente una respuesta incorrecta para ocultar
+        let indiceRespuestaOcultar = respuestasIncorrectas[Math.floor(Math.random() * respuestasIncorrectas.length)];
 
-    // Ocultar la respuesta seleccionada
-    ocultarRespuesta(indiceRespuestaOcultar);
+        // Ocultar la respuesta seleccionada
+        ocultarRespuesta(indiceRespuestaOcultar);
+
+        comodinesRestantes--;
+
+        // Actualizar la visualización del contador de comodines
+        actualizarContadorComodines();
+    }
 }
+
+function actualizarContadorComodines() {
+    // Mostrar el número de comodines restantes en algún elemento HTML (por ejemplo, un div con id="contadorComodines")
+    let contadorElemento = document.getElementById('contadorComodines');
+    if (contadorElemento) {
+        contadorElemento.textContent = `Comodines restantes: ${comodinesRestantes}`;
+    }
+}
+
+
 
 function obtenerIndiceRespuestaCorrecta() {
     // Obtener el índice del botón que contiene la respuesta correcta

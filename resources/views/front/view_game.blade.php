@@ -24,6 +24,7 @@
             <div id="comodin" onclick="usarComodin()">
                 <a>Comodín</a>
             </div>
+            <div id="contadorComodines" style="margin-top: 10px; font-weight: bold;"></div>
             <input type="hidden" name="puntaje" id="inputpuntaje" value="">
             <script src="{{ asset('js/logica.js') }}"></script>
         </form>
