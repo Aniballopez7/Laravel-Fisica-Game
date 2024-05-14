@@ -189,3 +189,20 @@ ul{
     color: #000428;
     text-decoration: none;
   }
+
+  #comodin{
+    position: absolute;
+    bottom: -15%;
+    right: 25%;
+    color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+    padding: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  #comodin:hover{
+    background-color: #fff;
+    color: #000;
+  }

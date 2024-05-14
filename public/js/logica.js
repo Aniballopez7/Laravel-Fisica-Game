@@ -79,6 +79,9 @@ function escogerPreguntaAleatoria() {
 }
 
 function escogerPregunta(n) {
+    for (const btn of btn_correspondiente) {
+        btn.style.display = ""; // Restablecer el estilo display a su valor predeterminado (visible)
+    }
     pregunta = interprete_bp[n];
     select_id("categoria").innerHTML = pregunta.categoria;
     select_id("pregunta").innerHTML = pregunta.pregunta;
@@ -174,4 +177,36 @@ function readText(ruta_local) {
         texto = xmlhttp.responseText;
     }
     return texto;
+}
+
+function usarComodin() {
+    // Obtener el índice de la respuesta correcta
+    let indiceRespuestaCorrecta = obtenerIndiceRespuestaCorrecta();
+
+    // Obtener un arreglo de índices de respuestas incorrectas (excluyendo la respuesta correcta)
+    let respuestasIncorrectas = [1, 2, 3].filter(index => index !== indiceRespuestaCorrecta);
+
+    // Elegir aleatoriamente una respuesta incorrecta para ocultar
+    let indiceRespuestaOcultar = respuestasIncorrectas[Math.floor(Math.random() * respuestasIncorrectas.length)];
+
+    // Ocultar la respuesta seleccionada
+    ocultarRespuesta(indiceRespuestaOcultar);
+}
+
+function obtenerIndiceRespuestaCorrecta() {
+    // Obtener el índice del botón que contiene la respuesta correcta
+    for (let i = 0; i < 4; i++) {
+        if (posibles_respuestas[i] === pregunta.respuesta) {
+            return i + 1; // Devuelve el índice (1-based) del botón que contiene la respuesta correcta
+        }
+    }
+    return -1; // En caso de no encontrar la respuesta correcta (esto no debería ocurrir)
+}
+
+function ocultarRespuesta(indiceRespuesta) {
+    // Obtener el botón correspondiente según el índice de respuesta
+    let btnOcultar = btn_correspondiente[indiceRespuesta - 1]; // Convertir el índice (1-based) a 0-based
+
+    // Ocultar el botón cambiando su estilo display a "none"
+    btnOcultar.style.display = "none";
 }

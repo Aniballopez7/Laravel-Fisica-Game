@@ -21,6 +21,9 @@
                 <div class="btn" id="btn3" onclick="oprimir_btn(2)"></div>
                 <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
             </div>
+            <div id="comodin" onclick="usarComodin()">
+                <a>Comodín</a>
+            </div>
             <input type="hidden" name="puntaje" id="inputpuntaje" value="">
             <script src="{{ asset('js/logica.js') }}"></script>
         </form>
