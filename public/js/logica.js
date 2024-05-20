@@ -14,6 +14,7 @@ window.onload = function () {
         })
         .catch((error) => console.error("Error al leer el JSON:", error));
         actualizarContadorComodines();
+        actualizarBarraProgreso();
 };
 
 let pregunta;
@@ -42,7 +43,7 @@ function escogerPreguntaAleatoria() {
             n = 0;
         }
     }
-    if (preguntas_hechas === 2) {
+    if (preguntas_hechas === 10) {
         pc = preguntas_correctas;
         select_id("inputpuntaje").value = preguntas_correctas;
         //Aquí es donde el juego se reinicia
@@ -76,6 +77,7 @@ function escogerPreguntaAleatoria() {
 
         npreguntas.push(n);
         escogerPregunta(n);
+        actualizarBarraProgreso();
     }
 }
 
@@ -180,6 +182,14 @@ function readText(ruta_local) {
     return texto;
 }
 
+function actualizarBarraProgreso() {
+    let progressBar = document.getElementById('progress-bar');
+    if (progressBar) {
+        let progreso = (preguntas_hechas / 10) * 100;
+        progressBar.style.height = `${progreso}%`;
+    }
+}
+
 let comodinesRestantes = 3;
 
 function usarComodin() {
@@ -199,6 +209,15 @@ function usarComodin() {
         comodinesRestantes--;
 
         // Actualizar la visualización del contador de comodines
+        actualizarContadorComodines();
+    }
+}
+
+function usarComodinSaltar() {
+    if (comodinesSaltarRestantes > 0) {
+        preguntas_hechas--;
+        escogerPreguntaAleatoria();
+        comodinesRestantes--;
         actualizarContadorComodines();
     }
 }
@@ -230,3 +249,6 @@ function ocultarRespuesta(indiceRespuesta) {
     // Ocultar el botón cambiando su estilo display a "none"
     btnOcultar.style.display = "none";
 }
+
+let comodinesSaltarRestantes = 3;
+

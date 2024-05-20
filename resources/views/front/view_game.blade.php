@@ -4,6 +4,9 @@
 @section('content')
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <div class="contenedor">
+    <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
         <form method="POST" action="{{route('updatePuntuacion', $user->id)}}" id="formulario">
             @method('PUT')
             {{ csrf_field() }}
@@ -24,6 +27,7 @@
             <div id="comodin" onclick="usarComodin()">
                 <a>Comodín</a>
             </div>
+            <div id="comodinSaltar" onclick="usarComodinSaltar()">Saltar Pregunta</div>
             <div id="contadorComodines" style="margin-top: 10px; font-weight: bold;"></div>
             <input type="hidden" name="puntaje" id="inputpuntaje" value="">
             <script src="{{ asset('js/logica.js') }}"></script>
