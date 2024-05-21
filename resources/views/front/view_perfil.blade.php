@@ -10,7 +10,7 @@
                              @if ($user->photo_user == null)
                             <p>No hay Foto de Perfil</p>
                             @else
-                                <img src="{{asset('User/images/'.
+                                <img src="{{asset('User\images'.
                                 $user->photo_user)}}" width="100px" height="100px">
                                 {{-- <img src="{{ asset('images/'.$user->photo_user) }}" alt=""> --}}
                             @endif

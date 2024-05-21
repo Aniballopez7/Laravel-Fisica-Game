@@ -42,7 +42,7 @@ class PerfilController extends Controller
         //todo validando la tabla de User
         $user = User::findOrFail($id);
         $image = $request->file('photo_user');
-        $path = 'User/images/';
+        $path = 'User\images';
         $imageName = time() . "_" . $image->getClientOriginalName();
         $upload = $request->file('photo_user')->move($path, $imageName);
         $user->photo_user = $path . $imageName;
