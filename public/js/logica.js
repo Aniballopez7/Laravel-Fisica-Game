@@ -186,7 +186,7 @@ function actualizarBarraProgreso() {
     let progressBar = document.getElementById('progress-bar');
     if (progressBar) {
         let progreso = (preguntas_hechas / 10) * 100;
-        progressBar.style.height = `${progreso}%`;
+        progressBar.style.width = `${progreso}%`;
     }
 }
 

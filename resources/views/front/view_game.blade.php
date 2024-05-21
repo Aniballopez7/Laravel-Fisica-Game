@@ -13,7 +13,6 @@
             <div class="puntaje" id="puntaje"></div>
             <div class="encabezado">
                 <a class="salir" href="/">
-                    <img class="img" src="icon/flecha-pequena-izquierda.png" alt="Salir al menu de juegos">
                 </a>
                 <div class="categoria" id="categoria"></div>
                 <div class="numero" id="numero"></div>
@@ -24,11 +23,9 @@
                 <div class="btn" id="btn3" onclick="oprimir_btn(2)"></div>
                 <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
             </div>
-            <div id="comodin" onclick="usarComodin()">
-                <a>Comodín</a>
-            </div>
+            <div id="comodin" onclick="usarComodin()">Eliminar Incorrecta</div>
             <div id="comodinSaltar" onclick="usarComodinSaltar()">Saltar Pregunta</div>
-            <div id="contadorComodines" style="margin-top: 10px; font-weight: bold;"></div>
+            <div id="contadorComodines"></div>
             <input type="hidden" name="puntaje" id="inputpuntaje" value="">
             <script src="{{ asset('js/logica.js') }}"></script>
         </form>

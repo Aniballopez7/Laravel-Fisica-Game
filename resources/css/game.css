@@ -4,11 +4,12 @@
     font-style: normal;
 }
 
-body{
-    background: #000428;  /* fallback for old browsers */
-    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+body {
+    background: linear-gradient(to right, #004e92, #000428);
     text-align: center;
     font-family: "Hammersmith One";
+    margin: 0;
+    padding: 0;
 }
 
 #header {
@@ -16,16 +17,18 @@ body{
     flex-direction: row;
     justify-content: space-around;
 }
+
 .titulo {
     display: flex;
     width: 100%;
-    font-size: 48px;
+    font-size: 40px; /* Moderately reduced font size */
     color: #fff;
     justify-content: center;
     align-self: center;
     text-decoration: none;
 }
-ul{
+
+ul {
     width: 20%;
     display: flex;
     justify-content: space-evenly;
@@ -34,8 +37,9 @@ ul{
     margin: 0;
     list-style: none;
 }
+
 .card {
-    height: 500px;
+    height: 450px; /* Moderately reduced height */
     margin: 10px;
     border-radius: 10px;
     background-size: cover;
@@ -44,7 +48,7 @@ ul{
     transition: .4s flex;
 }
 
-.nav-link{
+.nav-link {
     color: #fff;
     text-decoration: none;
     transition: all .5s;
@@ -54,18 +58,14 @@ ul{
     -moz-transition: all .5s;
     -ms-transition: all .5s;
     -o-transition: all .5s;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     background-color: #fff;
     color: #1F1C2C;
 }
 
-.nav-item-dropdown{
+.nav-item-dropdown {
     width: 20%;
     color: #fff;
     display: flex;
@@ -76,8 +76,7 @@ ul{
     list-style: none;
 }
 
-
-.dropdown-item{
+.dropdown-item {
     color: #fff;
     text-decoration: none;
     transition: all .5s;
@@ -94,106 +93,106 @@ ul{
     -o-border-radius: 25px;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
     background-color: #fff;
     color: #1F1C2C;
 }
 
-#logout-form.d-none{
+#logout-form.d-none {
     margin: 0;
 }
 
-.contenedor{
-    height: 100vh;
+.contenedor {
     width: 100vw;
-    display: inline-flex;
+    display: flex; /* Changed to flex */
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.encabezado{
-    min-width: 300px;
-    max-width: 700px;
-    width: 70%;
-    border: 20px solid #fff;
+.encabezado {
+    min-width: 250px; /* Moderately reduced width */
+    max-width: 650px; /* Moderately reduced width */
+    width: 70%; /* Adjusted width */
+    border: 15px solid #fff; /* Moderately reduced border */
     border-radius: 10px;
+    align-items: center;
     position: relative;
 }
 
-.categoria{
+.categoria {
     opacity: 0.8;
     text-align: center;
     color: #fff;
-    font-size: 32px;
+    font-size: 28px; /* Moderately reduced font size */
     font-weight: bold;
     font-style: italic;
-    margin: 1rem 0px;
+    margin: 0.5rem 0px; /* Adjusted margin */
 }
 
-.pregunta{
+.pregunta {
     color: #fff;
-    font-size: 32px;
+    font-size: 28px; /* Moderately reduced font size */
 }
-.btn{
-    width: 50%;
-    padding: 20px;
-    margin: 1rem auto;
+
+.btn {
+    width: 70%; /* Adjusted width */
+    padding: 15px; /* Moderately reduced padding */
+    margin: 0.5rem auto; /* Adjusted margin */
     transition: all .3s;
     cursor: pointer;
     color: #fff;
-    font-size: 20px;
-    max-width: 550px;
+    font-size: 18px; /* Moderately reduced font size */
+    max-width: 450px; /* Moderately reduced max-width */
     border-radius: 10px;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #fff;
     color: #283048;
     transform: scale(1.15);
 }
-.salir{
+
+.salir {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 35px; /* Moderately reduced size */
+    height: 35px; /* Moderately reduced size */
     top: 3%;
     left: 4%;
     transition: all 300ms;
     z-index: 1;
     border-radius: 10px;
     opacity: 0.3;
+    background-image: url(../icon/flecha-pequena-izquierda.png);
 }
 
-.img{
-    width: 40px;
-    height: 40px;
-}
-.salir:hover{
+.salir:hover {
     background-color: #fff;
 }
-.numero{
+
+.numero {
     position: absolute;
     color: #fff;
-    opacity:0.5;
+    opacity: 0.5;
     top: 5.5%;
     right: 4%;
-  }
+}
 
-  .puntaje{
-    padding:10px;
-    color:white;
-  }
+.puntaje {
+    padding: 10px;
+    color: white;
+}
 
-  .btn-puntuacion{
+.btn-puntuacion {
     background-color: #fff;
     color: #000428;
     text-decoration: none;
-  }
+}
 
-  #comodin{
+#comodin{
     position: absolute;
-    bottom: -15%;
-    right: 25%;
+    bottom: 18%;
+    right: 21%;
     color: #fff;
     text-decoration: none;
     transition: all .5s;
@@ -207,32 +206,50 @@ ul{
     color: #000;
   }
 
-  #contadorComodines {
-    font-size: 18px;
+  #comodinSaltar{
+    position: absolute;
+    bottom: 25%;
+    right: 22%;
     color: #fff;
-    margin-top: 10px;
-}
+    text-decoration: none;
+    transition: all .5s;
+    padding: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
 
-#contadorComodinesSaltar {
-    font-size: 18px;
-    color: #333;
-    margin-top: 10px; 
-    font-weight: bold;
+  #comodinSaltar:hover{
+    background-color: #fff;
+    color: #000;
+  }
+
+#contadorComodines {
+    position: relative;
+    font-size: 18px; /* Moderately reduced font size */
+    color: #fff;
+    margin-top: 5px; /* Adjusted margin */
 }
 
 #progress-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 100%;
-    background-color: #f3f3f3;
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
 #progress-bar {
-    width: 100%;
-    height: 0;
-    background-color: #4caf50;
-    transition: height 0.5s;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #4caf50, #81c784);
+    transition: width 0.5s;
+    position: absolute;
+    left: 0;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
